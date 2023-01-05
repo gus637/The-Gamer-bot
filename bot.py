@@ -1,5 +1,6 @@
 import discord
 import responses
+from discord_user import DiscordUser, users
 
 
 async def send_message(message, user_message, is_private):
@@ -21,7 +22,19 @@ def run_discord_bot():
 
     @client.event
     async def on_message(message):
-        if message.author == client.user: return
+        # Check if the message is from a bot
+        if message.author.bot: return
+        # Get the user's name and ID
+        username = message.author.name
+        user_id = message.author.id
+
+        # Check if the user is in the dictionary
+        if user_id not in users:
+            # If the user is not in the dictionary, add them to the dictionary
+            users[user_id] = DiscordUser(username, user_id)
+        # Get the user from the dictionary
+        user = users[user_id]
+        user.add_xp(10)
 
         username = str(message.author)
         user_message = str(message.content)
@@ -32,6 +45,7 @@ def run_discord_bot():
         if user_message[0] == '?':
             user_message = user_message[1:]
             await send_message(message, user_message, is_private=True)
-        else: await send_message(message, user_message, is_private=False)
+        else:
+            await send_message(message, user_message, is_private=False)
 
     client.run(TOKEN)
