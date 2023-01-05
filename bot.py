@@ -11,7 +11,7 @@ async def send_message(message, user_message, is_private):
 
 
 def run_discord_bot():
-    TOKEN: str = 'MTA1Njk3NzA5ODk0Nzk1MjY2Mg.GTEj5i.ThJ0kSHJ4AZ8pcjSqS8FmrEsDpmBnJXE8iQC6g'
+    from bot_bata import TOKEN
     intents = discord.Intents.all()
     client = discord.Client(intents=intents)
 

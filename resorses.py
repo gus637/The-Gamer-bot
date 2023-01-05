@@ -8,6 +8,4 @@ class User:
     name: str
     level: int = 0
     exp: int = 0
-
-    def save(self):
         
