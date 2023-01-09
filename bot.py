@@ -1,6 +1,7 @@
 import discord
 import responses
 from discord_user import DiscordUser, users
+import requests
 
 
 
@@ -37,7 +38,7 @@ def run_discord_bot():
         user = users[user_id]
         user.add_xp(10)
 
-        username = str(message.author)
+        username = user.name
         user_message = str(message.content)
         channel = str(message.channel)
 
