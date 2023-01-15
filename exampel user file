@@ -1,0 +1,11 @@
+#this is the file for user
+level = 1
+exp = 0
+name = user
+id = examplel user file
+# last 5 massages
+messages1
+messages2
+messages3
+messages4
+messages5
